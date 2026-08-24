@@ -1,3 +1,7 @@
+
+
+
+
 local Library = {}
 local TS = game:GetService("TweenService")
 local UIS = game:GetService("UserInputService")
@@ -316,21 +320,8 @@ local function SetImageAsync(instance, property, idStr)
         instance[property] = ""
         return
     end
-    
+
     instance[property] = parsedId
-    
-    if parsedId:find("rbxassetid://") then
-        task.spawn(function()
-            local success, result = pcall(function()
-                return game:GetObjects(parsedId)[1]
-            end)
-            if success and result and result:IsA("Decal") then
-                if instance.Parent then
-                    instance[property] = result.Texture
-                end
-            end
-        end)
-    end
 end
 
 local function GetTheme(cfg)
